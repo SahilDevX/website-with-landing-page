@@ -1,0 +1,419 @@
+/* General Styles */
+.help-section {
+    padding: 20px;
+    background-color: #fff;
+    margin-left: 50px;
+  }
+  
+  .container-help {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 20px;
+    background-color: #F6F5F7;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .help-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  .text-help{
+    background-color: #fff !important;
+  }
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .btn-submit {
+    padding: 10px 20px;
+    background-color: #ff914d;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-submit:hover {
+    background-color: #ff751d;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px;
+    }
+  }
+  
+
+
+
+  
+  
+.table-card {
+  width: 90%;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.responsive-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.responsive-table th,
+.responsive-table td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.responsive-table th {
+  font-weight: bold;
+}
+
+.responsive-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.responsive-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.responsive-table button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.responsive-table button:first-child {
+  background-color: #28a745;
+  color: #fff;
+  margin-right: 5px;
+}
+
+.responsive-table button:last-child {
+  background-color: #ff914d;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .table-card {
+    border-radius: 0;
+  }
+
+  .table-wrapper {
+    border-radius: 0;
+  }
+
+  .responsive-table {
+    border-radius: 0;
+  }
+}
+
+
+
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 5px;
+  z-index: 10000;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto; /* Enable scrolling */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+
+
+/* Adjustments for mobile view */
+@media screen and (max-width: 767px) {
+  .modal-container {
+    width: 90%;
+    max-width: 90%;
+    top: calc(50% + 30px); /* Push the modal down by 30px */
+  }
+
+  .modal-content {
+    font-size: 14px; /* Adjust text size for mobile view */
+  }
+  .candi-text {
+font-size: 17px !important;}
+}
+
+
+
+
+
+.searchbar {
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+.search-bar {
+  margin-bottom: 10px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.job-count {
+  border: 1px solid;
+  border-color: #ff914d;
+  padding: 7px;
+  font-weight: 100 !important;
+  color: #ff914d;
+}
+
+@media screen and (max-width: 768px) {
+  .searchbar {
+    padding: 10px;
+  }
+  
+  .search-input {
+    font-size: 14px; /* Adjust font size for mobile */
+  }
+  .search-heading {
+    font-size: 18px; /* Adjust font size for mobile */
+  }
+}
+
+.search-heading {
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+.my-left {
+  margin-left: 15px;
+}
+
+.my-card {
+  margin-bottom: 20px;
+  flex: 1 1 calc(33.333% - 20px);
+  max-width: 500px;
+}
+
+.responsive-details {
+  margin-top: 10px;
+}
+
+@media (max-width: 1200px) {
+  .my-card {
+    flex: 1 1 calc(50% - 20px); /* Two cards per row on medium screens */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .my-left {
+    margin-left: 15px;
+  }
+
+  .my-card {
+    flex: 1 1 100%; /* One card per row on small screens */
+  }
+
+  .responsive-details {
+    margin-top: 0;
+  }
+
+  .card-body {
+    padding: 10px;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+
+  .card-text {
+    font-size: 14px;
+  }
+
+  .text-job {
+    font-size: 14px;
+  }
+
+  .labels {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .label-border {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .hoverrr {
+    cursor: pointer;
+  }
+
+  .bg-white {
+    background-color: #fff;
+  }
+
+  .bg-orange {
+    background-color: #ff914d;
+  }
+}
+
+
+
+
+
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.container-jd {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 10000;
+  width: 90%;
+  height: 90%;
+  overflow: auto; /* Enable scrolling */
+}
+
+.job-description {
+  margin-top: 20px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 14px;
+}
+
+.title {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.subtitle {
+  font-size: 18px;
+  margin-left: 20px;
+
+}
+
+.detail {
+  font-size: 16px;
+}
+
+.value {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .detail,
+  .value {
+    font-size: 14px;
+  }
+
+  .pd-30 {
+    padding: 10px;
+  }
+  .close-btn {
+    font-size: 14px;
+  }
+}
+
+
+
+

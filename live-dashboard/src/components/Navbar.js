@@ -23,7 +23,7 @@ export default function Navbar() {
   };
   const handleRedirect = () => {
     // Open the HTML page in a new tab
-    window.open('/careerguidance.html', '_blank');
+    window.open('/mentorship.html', '_blank');
   };
 
   return (
@@ -42,7 +42,7 @@ export default function Navbar() {
                 <div className="navbar-nav mx-auto py-0">
                   <Link to="/forclient" className="nav-item nav-link fld" onClick={closeNavbar}>For Clients</Link>
                   <Link to="/recriturlandingpage" className="nav-item nav-link fld" onClick={closeNavbar}>For Recruiters</Link>
-                  <Link className="nav-item nav-link fld" onClick={handleRedirect}>Career</Link>
+                  <Link className="nav-item nav-link fld" onClick={handleRedirect}>Mentorship</Link>
                   <Link to="/about" className="nav-item nav-link fld" onClick={closeNavbar}>About Us</Link>
                   <Link to="/" className="nav-item nav-link bl btn fld" id="co" onClick={closeNavbar}>Contact Us</Link>
                   {/* <Link to="/Login" className="nav-item nav-link bl btn fld" id="co" onClick={closeNavbar}>Login</Link> */}

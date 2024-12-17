@@ -990,29 +990,31 @@ h6,
     overflow: hidden;
     position: relative;
   }
-
+  
   .logo-frame {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     overflow: hidden;
   }
-
+  
   .logo-row {
     display: flex;
     white-space: nowrap;
     position: relative;
     margin-bottom: 20px;
   }
-
+  
+  /* First Row Scrolling Left */
   .logo-row:nth-child(1) {
-    animation: scroll-left 20s linear infinite;
+    animation: scroll-left 50s linear infinite; /* Removed 'infinite' to stop after completion */
   }
-
+  
+  /* Second Row Scrolling Right */
   .logo-row:nth-child(2) {
-    animation: scroll-right 20s linear infinite;
+    animation: scroll-right 50s linear infinite; /* Adjust duration for desired speed */
   }
-
+  
   .logo-box {
     background-color: #f8faff;
     display: inline-flex;
@@ -1023,30 +1025,34 @@ h6,
     margin: 0 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
-
+  
   .logo-box img {
     max-height: 100%;
     max-width: 80%;
   }
-
+  .aws{
+    padding: 15px;
+  }
+  /* Keyframes for Scrolling Left */
   @keyframes scroll-left {
     0% {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(calc(-100% - 100vw)); /* Adjust for last logo visibility */
     }
   }
-
+  
+  /* Keyframes for Scrolling Right */
   @keyframes scroll-right {
     0% {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(calc(-100% - 100vw)); /* Adjust for last logo visibility */
     }
   }
-
+  
   @media (max-width: 768px) {
     .logo-box {
       height: 80px;
@@ -1275,7 +1281,7 @@ h6,
   }
 
   .talescope-form-title {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
@@ -1330,6 +1336,8 @@ h6,
 }
 .line-ht{
   line-height: 1.2 !important;
+  font-size: 13px;
+  text-align: justify;
 }
 .container-nav{
   max-width: 1104px;
@@ -1352,4 +1360,8 @@ h6,
   .d-lg-block-button{
     display: none !important;
   }
+}
+.no-cursor {
+  user-select: none; /* Prevent text selection */
+  cursor: default;   /* Change the cursor back to default arrow */
 }

@@ -454,6 +454,7 @@ h6,
     background-color: #ffffff; /* Background color for the center item */
     transform: scale(1.2); /* Scale up the center item */
     z-index: 10; /* Ensure the scaled item is on top */
+    max-height: -webkit-fill-available;
     margin: 0 15px; /* Add a bit more margin for the scaled item */
     border-radius: 12px; /* Apply larger border-radius when scaled */
    margin: 30px;
@@ -1364,4 +1365,7 @@ h6,
 .no-cursor {
   user-select: none; /* Prevent text selection */
   cursor: default;   /* Change the cursor back to default arrow */
+}
+.mb-05{
+  margin-bottom: .5rem;
 }

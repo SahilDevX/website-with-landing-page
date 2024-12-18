@@ -1,7 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link,   } from 'react-router-dom'
 
 export default function Fotter() {
+
+  // Function to redirect to Privacy Policy page
+  const redirectToPage = () => {
+    window.open('/privacy-policy.html', '_blank');
+  };
+
+  // Function to redirect to Terms & Conditions page
+  const redirectToTermsPage = () => {
+    window.open('/terms-&-condition.html', '_blank');
+  };
   return (
     <>
     <section className="info_section layout_padding35" id="cppp">
@@ -136,6 +146,21 @@ export default function Fotter() {
         </div>
       </div>
     </div>
+    <div className="container px-lg-5 border-above">
+                <div className="copyright">
+                    <div className="row  display-flex">
+                        <div className="col-md-6 text-center text-md-start mb-3 mb-md-0 address height">
+                             <a className=" address montserrat copyright" href="#">&copy;Talescope, All Right Reserved. </a>
+                        </div>
+                        <div className="col-md-6 text-center text-md-end">
+                            <div className="footer-menu display-flex-terms">
+                                <a className=" address montserrat no-cursor" onClick={redirectToPage} >Privacy Policy</a>
+                                <a className="address montserrat no-cursor" onClick={redirectToTermsPage}>Terms & Condition</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
   </section>
   </>
   )

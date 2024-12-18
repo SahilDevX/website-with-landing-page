@@ -1052,3 +1052,22 @@ a:focus {
 
 }
 /*# sourceMappingURL=style.css.map */
+.border-above{
+  border-top: 1px solid #dee2e6 !important;
+  margin-top: 20px;
+}
+.display-flex{
+  display: flex;
+}
+.display-flex-terms{
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+}
+.copyright{
+  text-align: start;
+  color: #ffffff;
+}
+.height{
+  height: 50px;
+}

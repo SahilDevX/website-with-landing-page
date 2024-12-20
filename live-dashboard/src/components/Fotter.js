@@ -150,7 +150,7 @@ export default function Fotter() {
                 <div className="copyright">
                     <div className="row  display-flex">
                         <div className="col-md-6 text-center text-md-start mb-3 mb-md-0 address height">
-                             <a className=" address montserrat copyright" href="#">&copy;Talescope, All Right Reserved. </a>
+                             <a className=" address montserrat copyright" href="#">&copy;Talescope Consulting Private Limited, All Right Reserved. </a>
                         </div>
                         <div className="col-md-6 text-center text-md-end">
                             <div className="footer-menu display-flex-terms">

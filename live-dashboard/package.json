@@ -28,6 +28,7 @@
     "fs": "^0.0.1-security",
     "http": "^0.0.1-security",
     "https-browserify": "^1.0.0",
+    "jspdf": "^2.5.2",
     "jwt-decode": "^4.0.0",
     "mailgun": "^0.5.0",
     "mailgun-js": "^0.22.0",

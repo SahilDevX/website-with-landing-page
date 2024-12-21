@@ -39,7 +39,7 @@ const AppRoutes = () => {
 
   // Function to check if the current route is /Payment, /Recdashboard, or /admin/dashboard
   const isNoNavbarRoute = () => {
-    return location.pathname === '/Payment' || location.pathname === '/recdashboard' || location.pathname === '/admin/dashboard';
+    return location.pathname === '/Payment' || location.pathname === '/recdashboard' || location.pathname === '/admin/dashboard' || location.pathname === '/paymentsuccess' || location.pathname === '/paymentfailure';
   };
 
   return (

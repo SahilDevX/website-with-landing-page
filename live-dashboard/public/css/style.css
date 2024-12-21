@@ -1071,3 +1071,236 @@ a:focus {
 .height{
   height: 50px;
 }
+/* Payment Container */
+.payment-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Form Header */
+.payment-container h2 {
+  text-align: center;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Form Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #555555;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Submit Button */
+.submit-button {
+  padding: 12px;
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .payment-container {
+      margin: 10px;
+      padding: 15px;
+  }
+
+  .form-group input,
+  .form-group select {
+      font-size: 14px;
+  }
+
+  .submit-button {
+      font-size: 16px;
+  }
+}
+
+.payment-success-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0 auto;
+  max-width: 800px;
+  border-radius: 8px;
+}
+
+h2 {
+  text-align: center;
+  color: #4CAF50;
+}
+
+.invoice-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.invoice-header {
+  text-align: center;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.invoice-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.invoice-body {
+  padding: 15px;
+}
+
+.invoice-item {
+  margin-bottom: 20px;
+}
+
+.invoice-item p {
+  margin: 5px 0;
+}
+
+.invoice-amount {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #4CAF50;
+}
+
+.invoice-footer {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #777;
+}
+
+p {
+  font-size: 1em;
+  margin: 5px 0;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.download-button {
+  margin-top: 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.goback-button {
+  margin-top: 20px;
+  background-color: #ffffff;
+  color: #0d6efd;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+}
+.download-button:hover {
+  background-color: #45a049;
+}
+.display-flex-download{
+  display: flex;
+  justify-content: space-between;
+}
+.color-green{
+  color: #4CAF50;
+}
+.payment-failure-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8d7da;
+  font-family: Arial, sans-serif;
+}
+
+.content-container {
+  text-align: center;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 500px;
+}
+
+.text-danger {
+  color: #dc3545;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.failure-message {
+  font-size: 1.2rem;
+  color: #6c757d;
+  margin-bottom: 30px;
+}
+
+.btn-home {
+  padding: 12px 25px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-home:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.btn-home:focus {
+  outline: none;
+}

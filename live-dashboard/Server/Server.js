@@ -13,16 +13,16 @@ app.use(cors());
 
 app.use(express.json());
 
-const MERCHANT_KEY = "79cdd0ab-5264-4f7b-8815-1bf0d4c26d95";
-const MERCHANT_ID = "M22C6IJRWJ8XR";
+const MERCHANT_KEY = "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399";
+const MERCHANT_ID = "PGTESTPAYUAT";
 
-const MERCHANT_BASE_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
-const MERCHANT_STATUS_URL = "https://api.phonepe.com/apis/hermes/pg/v1/status";
+const MERCHANT_BASE_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
+const MERCHANT_STATUS_URL = "	https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status";
 
-const redirectUrl = "/status";
+const redirectUrl = "http://localhost:8000/status";
 
-const successUrl = "http://talescope.io/#/paymentsuccess";
-const failureUrl = "http://talescope.io/#/paymentfailure";
+const successUrl = "http://localhost:8000/#/paymentsuccess";
+const failureUrl = "http://localhost:8000/#/paymentfailure";
 
 // Airtable API Configuration
 const AIRTABLE_BASE_ID = "appxz6ED4aUNV6X0j";
@@ -103,7 +103,7 @@ app.post('/order', async (req, res) => {
             amount: amount * 100,
             merchantTransactionId: orderId,
             redirectUrl: `${redirectUrl}/?id=${orderId}`, // Pass orderId to the status route
-            redirectMode: 'REDIRECT',
+            redirectMode: 'POST',
             paymentInstrument: {
                 type: 'PAY_PAGE',
             },

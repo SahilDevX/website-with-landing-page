@@ -45,8 +45,10 @@
     "react-scripts": "^5.0.1",
     "resolve": "^1.22.8",
     "router-dom": "^2.2.11",
+    "sha256": "^0.2.0",
     "stream": "^0.0.2",
     "sweetalert2": "^11.10.7",
+    "uniqid": "^5.4.0",
     "url": "^0.11.3",
     "web-vitals": "^2.1.4",
     "zlib": "^1.0.5"

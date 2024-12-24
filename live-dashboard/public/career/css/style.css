@@ -1040,7 +1040,7 @@ h6,
       transform: translateX(0);
     }
     100% {
-      transform: translateX(calc(-100% - 100vw)); /* Adjust for last logo visibility */
+      transform: translateX(calc(-40% - 100vw)); /* Adjust for last logo visibility */
     }
   }
   
@@ -1050,7 +1050,7 @@ h6,
       transform: translateX(0);
     }
     100% {
-      transform: translateX(calc(-100% - 100vw)); /* Adjust for last logo visibility */
+      transform: translateX(calc(-40% - 100vw)); /* Adjust for last logo visibility */
     }
   }
   
@@ -1382,3 +1382,4 @@ h6,
     align-items: center !important;
   }
 }
+

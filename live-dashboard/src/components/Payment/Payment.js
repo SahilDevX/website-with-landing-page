@@ -17,7 +17,7 @@ export default function Payment() {
     });
 
     const options = [
-        { label: 'Resume Review', amount: 499 },
+        { label: 'Resume Review', amount: 1 },
         { label: 'Career Counselling', amount: 999 },
         { label: 'Career Counselling + Resume Review', amount: 1399 },
     ];
@@ -84,7 +84,7 @@ export default function Payment() {
                     Swal.showLoading();
                 },
             });
-            const response = await axios.post('http://localhost:8000/order', data);
+            const response = await axios.post('/order', data);
 
             Swal.close(); // Close the alert once processing is done
 
@@ -101,68 +101,151 @@ export default function Payment() {
     };
 
     return (
-        <div className="payment-container">
-            <h2>Enter Your Details to Proceed with Payment</h2>
-            <form className="payment-form" onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="name">Name:</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        placeholder="Enter your name"
-                    />
-                </div>
+<>
+<div class="navbar-wrapper" id="home">
+    <nav class="navbar-custom">
+      <div className='container'>
+      <img class="navbar-logo-img" src="./career/img/Logo-white.png" alt="Talescope" />
+      </div>
+    </nav>
+</div>
 
-                <div className="form-group">
-                    <label htmlFor="phoneNumber">Phone Number:</label>
-                    <input
-                        type="tel"
-                        id="phoneNumber"
-                        name="phoneNumber"
-                        value={formData.phoneNumber}
-                        onChange={handleInputChange}
-                        required
-                        placeholder="Enter your phone number"
-                    />
-                </div>
 
-                <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        placeholder="Enter your email"
-                    />
-                </div>
+      <div className="payment-container">
+      <h2>Payment Details</h2>
+      <form className="payment-form" onSubmit={handleSubmit}>
+          <div className="form-group">
+              <label htmlFor="name">Name:</label>
+              <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="Enter your name"
+              />
+          </div>
 
-                <div className="form-group">
-                    <label htmlFor="options">Select an Option:</label>
-                    <select
-                        id="options"
-                        name="selectedOption"
-                        value={formData.selectedOption}
-                        onChange={handleOptionChange}
-                        required
-                    >
-                        <option value="">--Select an Option--</option>
-                        {options.map((option, index) => (
-                            <option key={index} value={option.label}>
-                                {option.label} (₹{option.amount})
-                            </option>
-                        ))}
-                    </select>
-                </div>
+          <div className="form-group">
+              <label htmlFor="phoneNumber">Phone Number:</label>
+              <input
+                  type="tel"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="Enter your phone number"
+              />
+          </div>
 
-                <button className="submit-button" type="submit">Pay Now</button>
-            </form>
-        </div>
+          <div className="form-group">
+              <label htmlFor="email">Email:</label>
+              <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="Enter your email"
+              />
+          </div>
+
+          <div className="form-group">
+              <label htmlFor="options">Select an Option:</label>
+              <select
+                  id="options"
+                  name="selectedOption"
+                  value={formData.selectedOption}
+                  onChange={handleOptionChange}
+                  required
+              >
+                  <option value="">--Select an Option--</option>
+                  {options.map((option, index) => (
+                      <option key={index} value={option.label}>
+                          {option.label} (₹{option.amount})
+                      </option>
+                  ))}
+              </select>
+          </div>
+
+          <button className="submit-button" type="submit">Pay Now</button>
+      </form>
+  </div>
+  
+  </>
     );
 }
+
+
+    //     <div className="user-payment-form-container">
+    //   <h1 className="user-payment-form-title">User Details</h1>
+    //   <p className="user-payment-form-description">
+    //     Please fill in your details accurately before proceeding with the payment.
+    //   </p>
+    //   <form className="user-payment-form">
+    //     {/* Name */}
+    //     <div className="user-payment-form-group">
+    //       <label htmlFor="full-name" className="user-payment-form-label">
+    //         Full Name
+    //       </label>
+    //       <input
+    //         type="text"
+    //         id="full-name"
+    //         className="user-payment-form-input"
+    //         placeholder="Enter your full name"
+    //         required
+    //       />
+    //     </div>
+
+    //     {/* Email */}
+    //     <div className="user-payment-form-group">
+    //       <label htmlFor="email" className="user-payment-form-label">
+    //         Email Address
+    //       </label>
+    //       <input
+    //         type="email"
+    //         id="email"
+    //         className="user-payment-form-input"
+    //         placeholder="example@example.com"
+    //         required
+    //       />
+    //     </div>
+
+    //     {/* Phone Number */}
+    //     <div className="user-payment-form-group">
+    //       <label htmlFor="phone" className="user-payment-form-label">
+    //         Phone Number
+    //       </label>
+    //       <input
+    //         type="tel"
+    //         id="phone"
+    //         className="user-payment-form-input"
+    //         placeholder="(000) 000-0000"
+    //         required
+    //       />
+    //     </div>
+
+    //     {/* Dropdown */}
+    //     <div className="user-payment-form-group">
+    //       <label htmlFor="service" className="user-payment-form-label">
+    //         Select a Service
+    //       </label>
+    //       <select id="service" className="user-payment-form-select" required>
+    //         <option value="" disabled selected>
+    //           Choose a service
+    //         </option>
+    //         <option value="resume-review">Resume Review</option>
+    //         <option value="career-counselling">Career Counselling</option>
+    //         <option value="bundle">Career Counselling + Resume Review</option>
+    //       </select>
+    //     </div>
+
+    //     {/* Submit Button */}
+    //     <button type="submit" className="user-payment-form-submit">
+    //       Proceed to Payment
+    //     </button>
+    //   </form>
+    // </div>

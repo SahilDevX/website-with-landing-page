@@ -1074,7 +1074,7 @@ a:focus {
 /* Payment Container */
 .payment-container {
   max-width: 600px;
-  margin: 20px auto;
+  margin: 100px auto;
   padding: 20px;
   background: #ffffff;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -1092,14 +1092,12 @@ a:focus {
 .payment-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
 }
 
 /* Form Group */
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 5px;
 }
 
 .form-group label {
@@ -1110,9 +1108,10 @@ a:focus {
 .form-group input,
 .form-group select {
   padding: 10px;
+  background-color: #f9f9f9 !important;
   border: 1px solid #cccccc;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .form-group input:focus,
@@ -1131,6 +1130,7 @@ a:focus {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 0 !important;
   transition: background-color 0.3s ease;
 }
 
@@ -1141,7 +1141,6 @@ a:focus {
 /* Responsive Design */
 @media (max-width: 768px) {
   .payment-container {
-      margin: 10px;
       padding: 15px;
   }
 
@@ -1223,7 +1222,7 @@ strong {
 }
 
 .download-button {
-  margin-top: 20px;
+  margin: 20px;
   background-color: #4CAF50;
   color: white;
   border: none;
@@ -1233,7 +1232,9 @@ strong {
   border-radius: 5px;
   text-align: center;
 }
-
+.invoice-address{
+  text-align: end;
+}
 .goback-button {
   margin-top: 20px;
   background-color: #ffffff;
@@ -1247,6 +1248,7 @@ strong {
   background-color: #45a049;
 }
 .display-flex-download{
+  width: 80%;
   display: flex;
   justify-content: space-between;
 }
@@ -1303,4 +1305,211 @@ strong {
 
 .btn-home:focus {
   outline: none;
+}
+
+/* Container */
+.user-payment-form-container {
+  background-color: #f9f9f9;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Title */
+.user-payment-form-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Description */
+.user-payment-form-description {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+/* Form Group */
+.user-payment-form-group {
+  margin-bottom: 20px;
+}
+
+/* Label */
+.user-payment-form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+/* Input Fields */
+.user-payment-form-input,
+.user-payment-form-select {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+/* Dropdown */
+.user-payment-form-select {
+  appearance: none;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+/* Submit Button */
+.user-payment-form-submit {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.user-payment-form-submit:hover {
+  background-color: #0056b3;
+}
+.invoice {
+  width: 80%;
+  margin: 20px auto;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.invoice-header {
+  background-color: #003f7f;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.invoice-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+.invoice-header img {
+  height: 50px;
+}
+.invoice-info {
+  padding: 20px;
+  border-bottom: 2px solid #ddd;
+}
+.invoice-info table {
+  width: 100%;
+}
+.invoice-info td {
+  padding: 5px 0;
+  vertical-align: top;
+}
+.invoice-items {
+  padding: 20px;
+}
+.invoice-items table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.invoice-items th, .invoice-items td {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 10px;
+}
+.invoice-items th {
+  background-color: #f4f4f4;
+}
+.total {
+  text-align: right;
+  padding: 20px;
+  background-color: #003f7f;
+  color: white;
+  font-size: 1.5rem;
+}
+.notes {
+  padding: 20px;
+  background-color: #e7f3ff;
+  font-style: italic;
+}
+.footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #555;
+}
+.footer a {
+  color: #003f7f;
+  text-decoration: none;
+}
+
+/* Navbar Wrapper */
+.navbar-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Custom Navbar */
+.navbar-custom {
+  background-color: #18242f; /* Black background */
+  position: fixed; /* Fixed position at the top */
+  top: 0;
+  width: 100%; /* Full width */
+  height: 65px;
+  z-index: 1000; /* Ensure it stays on top */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+}
+
+/* Navbar Container */
+.navbar-custom-container {
+  display: flex;
+  justify-content: space-between; /* Align logo and menu items */
+  align-items: center;
+}
+
+/* Logo Container */
+.navbar-logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* Logo Image */
+.navbar-logo-img {
+  width: 100px; /* Adjust size of the logo */
+}
+
+/* Logo Text */
+.navbar-logo-title {
+  color: white;
+  font-size: 24px;
+  margin-left: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .navbar-custom-container {
+      flex-direction: column; /* Stack logo and menu items */
+      padding: 10px;
+  }
+
+  .navbar-logo-img {
+      height: 40px; /* Adjust logo size for smaller screens */
+  }
 }

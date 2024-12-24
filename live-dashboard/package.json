@@ -26,6 +26,7 @@
     "fallback": "^1.0.1",
     "form-data": "^4.0.0",
     "fs": "^0.0.1-security",
+    "html2canvas": "^1.4.1",
     "http": "^0.0.1-security",
     "https-browserify": "^1.0.0",
     "jspdf": "^2.5.2",

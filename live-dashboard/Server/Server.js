@@ -8,22 +8,21 @@ const app = express();
 // Create an in-memory cache for storing record IDs temporarily
 const cache = new Map();
 
-// Serve React static files
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.use(express.json());
 app.use(cors());
 
-const MERCHANT_KEY = "96434309-7796-489d-8924-ab56988a6076";
-const MERCHANT_ID = "PGTESTPAYUAT86";
 
-const MERCHANT_BASE_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
-const MERCHANT_STATUS_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status";
+app.use(express.json());
 
-const redirectUrl = "http://localhost:8000/status";
+const MERCHANT_KEY = "79cdd0ab-5264-4f7b-8815-1bf0d4c26d95";
+const MERCHANT_ID = "M22C6IJRWJ8XR";
 
-const successUrl = "http://localhost:3000/#/paymentsuccess";
-const failureUrl = "http://localhost:3000/#/paymentfailure";
+const MERCHANT_BASE_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
+const MERCHANT_STATUS_URL = "https://api.phonepe.com/apis/hermes/pg/v1/status";
+
+const redirectUrl = "/status";
+
+const successUrl = "http://talescope.io/#/paymentsuccess";
+const failureUrl = "http://talescope.io/#/paymentfailure";
 
 // Airtable API Configuration
 const AIRTABLE_BASE_ID = "appxz6ED4aUNV6X0j";
@@ -72,7 +71,9 @@ async function updateDataToAirtable(data, recordId) {
         throw error;
     }
 }
-
+app.get('/start', (req, res) => {
+    res.send('Server is running!');
+  });
 app.post('/order', async (req, res) => {
     const { name, phoneNumber, email, amount, selectedOption } = req.body;
     const orderId = uuidv4();
@@ -102,7 +103,7 @@ app.post('/order', async (req, res) => {
             amount: amount * 100,
             merchantTransactionId: orderId,
             redirectUrl: `${redirectUrl}/?id=${orderId}`, // Pass orderId to the status route
-            redirectMode: 'POST',
+            redirectMode: 'REDIRECT',
             paymentInstrument: {
                 type: 'PAY_PAGE',
             },
@@ -177,7 +178,8 @@ app.post('/status', async (req, res) => {
 
     try {
         const response = await axios.request(options);
-        if (response.data.success === true) {
+        console.log('Final Respponse:',response.data,)
+        if (response.data.code === 'PAYMENT_SUCCESS') {
             console.log("Payment success for order:", merchantTransactionId);
             console.log("Associated recordId in Airtable:", recordId);
 

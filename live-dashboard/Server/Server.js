@@ -1,28 +1,27 @@
 const express = require('express');
+const path = require('path');
 const axios = require('axios');
 const crypto = require('crypto');
 const cors = require("cors");
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
-// Create an in-memory cache for storing record IDs temporarily
-const cache = new Map();
+const port = process.env.PORT || 8000;
 
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Middleware to handle JSON data and CORS
+app.use(express.json());
 app.use(cors());
 
-
-app.use(express.json());
-
-const MERCHANT_KEY = "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399";
-const MERCHANT_ID = "PGTESTPAYUAT";
-
+const MERCHANT_KEY = "96434309-7796-489d-8924-ab56988a6076";
+const MERCHANT_ID = "PGTESTPAYUAT86";
 const MERCHANT_BASE_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
-const MERCHANT_STATUS_URL = "	https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status";
-
+const MERCHANT_STATUS_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status";
 const redirectUrl = "http://localhost:8000/status";
-
-const successUrl = "http://localhost:8000/#/paymentsuccess";
-const failureUrl = "http://localhost:8000/#/paymentfailure";
+const successUrl = "http://localhost:3000/#/paymentsuccess";
+const failureUrl = "http://localhost:3000/#/paymentfailure";
 
 // Airtable API Configuration
 const AIRTABLE_BASE_ID = "appxz6ED4aUNV6X0j";
@@ -50,8 +49,7 @@ async function sendDataToAirtable(data) {
     }
 }
 
-
-// Function to send data to Airtable
+// Function to update data in Airtable
 async function updateDataToAirtable(data, recordId) {
     try {
         const response = await axios.patch(
@@ -74,6 +72,7 @@ async function updateDataToAirtable(data, recordId) {
 app.get('/start', (req, res) => {
     res.send('Server is running!');
   });
+// Order API endpoint
 app.post('/order', async (req, res) => {
     const { name, phoneNumber, email, amount, selectedOption } = req.body;
     const orderId = uuidv4();
@@ -92,9 +91,6 @@ app.post('/order', async (req, res) => {
         // Save data to Airtable
         const recordId = await sendDataToAirtable(airtableData);
 
-        // Store the recordId and orderId in the cache
-        cache.set(orderId, recordId);
-
         // Prepare payment payload
         const paymentPayload = {
             merchantId: MERCHANT_ID,
@@ -102,7 +98,7 @@ app.post('/order', async (req, res) => {
             mobileNumber: phoneNumber,
             amount: amount * 100,
             merchantTransactionId: orderId,
-            redirectUrl: `${redirectUrl}/?id=${orderId}`, // Pass orderId to the status route
+            redirectUrl: `${redirectUrl}/?id=${orderId}`,
             redirectMode: 'POST',
             paymentInstrument: {
                 type: 'PAY_PAGE',
@@ -143,6 +139,7 @@ app.post('/order', async (req, res) => {
     }
 });
 
+// Payment status check API
 app.post('/status', async (req, res) => {
     const merchantTransactionId = req.query.id;
 
@@ -178,17 +175,14 @@ app.post('/status', async (req, res) => {
 
     try {
         const response = await axios.request(options);
-        console.log('Final Respponse:',response.data,)
-        if (response.data.code === 'PAYMENT_SUCCESS') {
+        if (response.data.success === true) {
             console.log("Payment success for order:", merchantTransactionId);
             console.log("Associated recordId in Airtable:", recordId);
 
             // Update Airtable
             await updateDataToAirtable(SuccessData, recordId);
 
-
             return res.redirect(`${successUrl}?recordId=${recordId}`);
-
         } else {
             console.log("Payment failure for order:", merchantTransactionId);
             console.log("Associated recordId in Airtable:", recordId);
@@ -204,8 +198,12 @@ app.post('/status', async (req, res) => {
     }
 });
 
+// All other routes should send React's index.html file
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
-
-app.listen(8000, () => {
-    console.log('Server is running on port 8000');
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });

@@ -84,7 +84,7 @@ export default function Payment() {
                     Swal.showLoading();
                 },
             });
-            const response = await axios.post('http://localhost:8000/order', data);
+            const response = await axios.post('http://talescope.io/order', data);
 
             Swal.close(); // Close the alert once processing is done
 

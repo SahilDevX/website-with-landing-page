@@ -1,25 +1,26 @@
 const express = require('express');
-const path = require('path');
 const axios = require('axios');
 const crypto = require('crypto');
 const cors = require("cors");
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
+// Create an in-memory cache for storing record IDs temporarily
+const cache = new Map();
 const port = process.env.PORT || 8000;
 
-// Serve the static files from the React app
-app.use(express.static(path.join(__dirname, 'build')));
 
-// Middleware to handle JSON data and CORS
 app.use(express.json());
 app.use(cors());
 
 const MERCHANT_KEY = "96434309-7796-489d-8924-ab56988a6076";
 const MERCHANT_ID = "PGTESTPAYUAT86";
+
 const MERCHANT_BASE_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
 const MERCHANT_STATUS_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status";
-const redirectUrl = "http://localhost:8000/status";
+
+const redirectUrl = "http://localhost:8000/api/status";
+
 const successUrl = "http://localhost:3000/#/paymentsuccess";
 const failureUrl = "http://localhost:3000/#/paymentfailure";
 
@@ -49,7 +50,8 @@ async function sendDataToAirtable(data) {
     }
 }
 
-// Function to update data in Airtable
+
+// Function to send data to Airtable
 async function updateDataToAirtable(data, recordId) {
     try {
         const response = await axios.patch(
@@ -69,11 +71,14 @@ async function updateDataToAirtable(data, recordId) {
         throw error;
     }
 }
-app.get('/start', (req, res) => {
+
+
+app.get('/api/start', (req, res) => {
     res.send('Server is running!');
   });
-// Order API endpoint
-app.post('/order', async (req, res) => {
+
+
+app.post('/api/order', async (req, res) => {
     const { name, phoneNumber, email, amount, selectedOption } = req.body;
     const orderId = uuidv4();
 
@@ -91,6 +96,9 @@ app.post('/order', async (req, res) => {
         // Save data to Airtable
         const recordId = await sendDataToAirtable(airtableData);
 
+        // Store the recordId and orderId in the cache
+        cache.set(orderId, recordId);
+
         // Prepare payment payload
         const paymentPayload = {
             merchantId: MERCHANT_ID,
@@ -98,7 +106,7 @@ app.post('/order', async (req, res) => {
             mobileNumber: phoneNumber,
             amount: amount * 100,
             merchantTransactionId: orderId,
-            redirectUrl: `${redirectUrl}/?id=${orderId}`,
+            redirectUrl: `${redirectUrl}/?id=${orderId}`, // Pass orderId to the status route
             redirectMode: 'POST',
             paymentInstrument: {
                 type: 'PAY_PAGE',
@@ -139,8 +147,7 @@ app.post('/order', async (req, res) => {
     }
 });
 
-// Payment status check API
-app.post('/status', async (req, res) => {
+app.post('/api/status', async (req, res) => {
     const merchantTransactionId = req.query.id;
 
     // Retrieve the recordId from the cache using the orderId
@@ -153,6 +160,7 @@ app.post('/status', async (req, res) => {
 
     const SuccessData = {
         PaymentStatus: "Successfull",
+        InvoiveURL: `${successUrl}?recordId=${recordId}`
     };
     const FailuerData = {
         PaymentStatus: "Failed",
@@ -175,14 +183,18 @@ app.post('/status', async (req, res) => {
 
     try {
         const response = await axios.request(options);
-        if (response.data.success === true) {
+        if (response.data.code === 'PAYMENT_SUCCESS') {
             console.log("Payment success for order:", merchantTransactionId);
             console.log("Associated recordId in Airtable:", recordId);
+            console.log("response.data.:", response.data);
+
 
             // Update Airtable
             await updateDataToAirtable(SuccessData, recordId);
 
+
             return res.redirect(`${successUrl}?recordId=${recordId}`);
+
         } else {
             console.log("Payment failure for order:", merchantTransactionId);
             console.log("Associated recordId in Airtable:", recordId);
@@ -198,10 +210,7 @@ app.post('/status', async (req, res) => {
     }
 });
 
-// All other routes should send React's index.html file
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+
 
 // Start the server
 app.listen(port, () => {

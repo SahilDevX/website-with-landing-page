@@ -1,10 +1,20 @@
 .App {
   text-align: center;
 }
+.montserrat {
+  font-family: montserrat, sans-serif !important;
+}
+
+.poppins {
+  font-family: poppins-semibold, poppins, sans-serif !important;
+}
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+.Logo{
+  width: 130px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

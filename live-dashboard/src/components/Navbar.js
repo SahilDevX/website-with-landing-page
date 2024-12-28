@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from './img/Logo.png'
+import logo from './img/Talescope-O-B.png'
 import { Link } from 'react-router-dom'
 
 
@@ -32,8 +32,8 @@ export default function Navbar() {
     <div className="containerrr bg-white p-0">
       <div className="containerrr position-relative p-0">
           <nav className="navbar navbar-expand-lg navbar-light px-4 pdlr-10 py-3 py-lg-0" id="nc">
-              <Link to="/" className="navbar-brand p-0">
-              <img src={logo} alt=""/>
+              <Link to="/" className="navbar-brand m-0">
+              <img className='Logo' src={logo} alt=""/>
               </Link>
               <button className="navbar-toggler" type="button" onClick={toggleNavbar}>
                 <span className="navbar-toggler-icon"></span>

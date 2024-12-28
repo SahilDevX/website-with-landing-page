@@ -17,9 +17,9 @@ export default function Payment() {
     });
 
     const options = [
-        { label: 'Resume Review', amount: 1 },
+        { label: 'Resume Review', amount: 499 },
         { label: 'Career Counselling', amount: 999 },
-        { label: 'Career Counselling + Resume Review', amount: 1399 },
+        { label: 'Growth Map', amount: 1399 },
     ];
 
     useEffect(() => {
@@ -84,7 +84,7 @@ export default function Payment() {
                     Swal.showLoading();
                 },
             });
-            const response = await axios.post('http://talescope.io/order', data);
+            const response = await axios.post('https://talescope.io/api/order', data);
 
             Swal.close(); // Close the alert once processing is done
 
@@ -112,8 +112,8 @@ export default function Payment() {
 
 
       <div className="payment-container">
-      <h2>Payment Details</h2>
-      <form className="payment-form" onSubmit={handleSubmit}>
+      <h2 className='montserrat'>Payment Details</h2>
+      <form className="payment-form poppins" onSubmit={handleSubmit}>
           <div className="form-group">
               <label htmlFor="name">Name:</label>
               <input
@@ -154,7 +154,7 @@ export default function Payment() {
           </div>
 
           <div className="form-group">
-              <label htmlFor="options">Select an Option:</label>
+              <label htmlFor="options">Select a Service:</label>
               <select
                   id="options"
                   name="selectedOption"
@@ -162,10 +162,10 @@ export default function Payment() {
                   onChange={handleOptionChange}
                   required
               >
-                  <option value="">--Select an Option--</option>
+                  <option value="">--Select an Service--</option>
                   {options.map((option, index) => (
                       <option key={index} value={option.label}>
-                          {option.label} (₹{option.amount})
+                          {option.label} (INR {option.amount}.00)
                       </option>
                   ))}
               </select>
@@ -179,73 +179,3 @@ export default function Payment() {
     );
 }
 
-
-    //     <div className="user-payment-form-container">
-    //   <h1 className="user-payment-form-title">User Details</h1>
-    //   <p className="user-payment-form-description">
-    //     Please fill in your details accurately before proceeding with the payment.
-    //   </p>
-    //   <form className="user-payment-form">
-    //     {/* Name */}
-    //     <div className="user-payment-form-group">
-    //       <label htmlFor="full-name" className="user-payment-form-label">
-    //         Full Name
-    //       </label>
-    //       <input
-    //         type="text"
-    //         id="full-name"
-    //         className="user-payment-form-input"
-    //         placeholder="Enter your full name"
-    //         required
-    //       />
-    //     </div>
-
-    //     {/* Email */}
-    //     <div className="user-payment-form-group">
-    //       <label htmlFor="email" className="user-payment-form-label">
-    //         Email Address
-    //       </label>
-    //       <input
-    //         type="email"
-    //         id="email"
-    //         className="user-payment-form-input"
-    //         placeholder="example@example.com"
-    //         required
-    //       />
-    //     </div>
-
-    //     {/* Phone Number */}
-    //     <div className="user-payment-form-group">
-    //       <label htmlFor="phone" className="user-payment-form-label">
-    //         Phone Number
-    //       </label>
-    //       <input
-    //         type="tel"
-    //         id="phone"
-    //         className="user-payment-form-input"
-    //         placeholder="(000) 000-0000"
-    //         required
-    //       />
-    //     </div>
-
-    //     {/* Dropdown */}
-    //     <div className="user-payment-form-group">
-    //       <label htmlFor="service" className="user-payment-form-label">
-    //         Select a Service
-    //       </label>
-    //       <select id="service" className="user-payment-form-select" required>
-    //         <option value="" disabled selected>
-    //           Choose a service
-    //         </option>
-    //         <option value="resume-review">Resume Review</option>
-    //         <option value="career-counselling">Career Counselling</option>
-    //         <option value="bundle">Career Counselling + Resume Review</option>
-    //       </select>
-    //     </div>
-
-    //     {/* Submit Button */}
-    //     <button type="submit" className="user-payment-form-submit">
-    //       Proceed to Payment
-    //     </button>
-    //   </form>
-    // </div>

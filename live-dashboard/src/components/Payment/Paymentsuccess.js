@@ -73,24 +73,54 @@ export default function PaymentSuccess() {
     if (loading) return null; // Return null here as SweetAlert will handle the loading state
     if (error) return <p>Error: {error}</p>;
 
+    
     const handleDownload = async () => {
         const element = document.querySelector(".invoice"); // Select the invoice element
+    
+        // Render the element to a canvas
         const canvas = await html2canvas(element, {
             scale: 2, // Increase scale for better quality
+            useCORS: true, // Handle cross-origin images if any
         });
+    
         const imgData = canvas.toDataURL("image/png"); // Convert to image
-        const pdf = new jsPDF("p", "mm", "a4"); // Create PDF instance
-
-        // Calculate dimensions
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-        // Add image to PDF
-        pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-
+        const contentWidth = canvas.width; // Content width in pixels
+        const contentHeight = canvas.height; // Content height in pixels
+    
+        // Define A4 dimensions in points (jsPDF uses points: 1 inch = 72 points)
+        const pdfWidth = 210; // A4 width in mm
+        const pdfHeight = 297; // A4 height in mm
+        const pdfAspectRatio = pdfHeight / pdfWidth;
+    
+        // Calculate the scaling to fit the entire content on one page
+        const contentAspectRatio = contentHeight / contentWidth;
+        let scaledWidth = pdfWidth;
+        let scaledHeight = pdfHeight;
+    
+        if (contentAspectRatio > pdfAspectRatio) {
+            // Content is taller than PDF page aspect ratio, scale by height
+            scaledHeight = pdfHeight;
+            scaledWidth = pdfHeight / contentAspectRatio;
+        } else {
+            // Content is wider than PDF page aspect ratio, scale by width
+            scaledWidth = pdfWidth;
+            scaledHeight = pdfWidth * contentAspectRatio;
+        }
+    
+        const pdf = new jsPDF("p", "mm", "a4"); // Create an A4 PDF
+    
+        // Add the scaled content as an image to the PDF, aligned to the top
+        pdf.addImage(imgData, "PNG", (pdfWidth - scaledWidth) / 2, 0, scaledWidth, scaledHeight);
+    
         // Save the PDF
         pdf.save("invoice.pdf");
     };
+    
+    
+    
+    
+    
+    
 
     return (
         <>
@@ -108,9 +138,9 @@ export default function PaymentSuccess() {
                         <div>
                             <h1>Talescope Consulting Private Limited</h1>
                             <p className="invoice-address">
-                                AECS B Block, Wellington Paradise, Singasandra,
+                                4 Br Enclave Apartments, Singasandra, Bangalore South, 
                                 <br />
-                                Bengaluru, Karnataka 560068
+                                Bangalore-560068, Karnataka
                             </p>
                         </div>
                     </div>
@@ -152,14 +182,14 @@ export default function PaymentSuccess() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>{recordData.SelectedOption}</td>
-                                    <td>1</td>
-                                    <td>Rs {itemamount}</td>
-                                    <td>Rs {gst}</td>
-                                    <td>Rs {amount}.00</td>
-                                </tr>
+                            <tr>
+    <td data-label="ITEMS">1</td>
+    <td data-label="DESCRIPTION">{recordData.SelectedOption}</td>
+    <td data-label="QUANTITY">1</td>
+    <td data-label="PRICE">Rs {itemamount}</td>
+    <td data-label="TAX(18%)">Rs {gst}</td>
+    <td data-label="AMOUNT">Rs {amount}.00</td>
+  </tr>
                             </tbody>
                         </table>
                     </div>

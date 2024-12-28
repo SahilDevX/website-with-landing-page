@@ -1077,7 +1077,6 @@ a:focus {
   margin: 100px auto;
   padding: 20px;
   background: #ffffff;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
 
@@ -1387,73 +1386,214 @@ strong {
   background-color: #0056b3;
 }
 .invoice {
-  width: 80%;
+  width: 90%;
   margin: 20px auto;
   background: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
 }
+
 .invoice-header {
   background-color: #003f7f;
   color: white;
   padding: 20px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
+
 .invoice-header h1 {
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.8rem;
+  text-align: center;
 }
+
 .invoice-header img {
-  height: 50px;
+  height: 40px;
 }
+
 .invoice-info {
-  padding: 20px;
+  padding: 15px;
   border-bottom: 2px solid #ddd;
 }
+
 .invoice-info table {
   width: 100%;
+  table-layout: auto;
 }
+
 .invoice-info td {
   padding: 5px 0;
   vertical-align: top;
+  word-wrap: break-word;
 }
+
 .invoice-items {
-  padding: 20px;
+  padding: 15px;
 }
+
 .invoice-items table {
   width: 100%;
   border-collapse: collapse;
 }
-.invoice-items th, .invoice-items td {
+
+.invoice-items th,
+.invoice-items td {
   border: 1px solid #ddd;
   text-align: left;
-  padding: 10px;
+  padding: 8px;
+  font-size: 0.9rem;
 }
+
 .invoice-items th {
   background-color: #f4f4f4;
 }
+
 .total {
   text-align: right;
-  padding: 20px;
+  padding: 15px;
   background-color: #003f7f;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
+
 .notes {
-  padding: 20px;
+  padding: 15px;
   background-color: #e7f3ff;
   font-style: italic;
 }
+
 .footer {
   text-align: center;
   padding: 10px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #555;
 }
+
 .footer a {
   color: #003f7f;
   text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .invoice-header {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+  }
+
+  .invoice-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .invoice-info td {
+    display: block;
+    padding-bottom: 10px;
+  }
+
+  .invoice-items th,
+  .invoice-items td {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+
+  .total {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .invoice-header h1 {
+    font-size: 1.2rem;
+  }
+
+  .invoice-items th,
+  .invoice-items td {
+    font-size: 0.7rem;
+    padding: 5px;
+  }
+
+  .total {
+    font-size: 0.9rem;
+  }
+}
+.invoice-items {
+  padding: 15px;
+  overflow-x: auto; /* Add horizontal scrolling for small screens */
+}
+
+.invoice-items table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* Ensures the table has a minimum width */
+}
+
+.invoice-items th,
+.invoice-items td {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 8px;
+  font-size: 0.9rem;
+}
+
+.invoice-items th {
+  background-color: #f4f4f4;
+}
+
+/* Responsive Design for Table */
+@media (max-width: 768px) {
+  .invoice-items table {
+    min-width: 100%; /* Remove fixed width */
+    display: block; /* Make table block */
+    overflow-x: auto; /* Enable scrolling */
+  }
+
+  .invoice-items th,
+  .invoice-items td {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .invoice-items table,
+  .invoice-items thead,
+  .invoice-items tbody,
+  .invoice-items th,
+  .invoice-items td,
+  .invoice-items tr {
+    display: block; /* Stack table rows */
+  }
+
+  .invoice-items tr {
+    margin-bottom: 15px; /* Add spacing between rows */
+  }
+
+  .invoice-items th {
+    display: none; /* Hide table headers */
+  }
+
+  .invoice-items td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+
+  .invoice-items td:before {
+    content: attr(data-label); /* Add labels for each row */
+    font-weight: bold;
+    flex: 1;
+    text-align: left;
+    margin-right: 10px;
+    color: #333;
+  }
 }
 
 /* Navbar Wrapper */

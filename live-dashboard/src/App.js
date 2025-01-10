@@ -15,6 +15,7 @@ import RecApplication from './components/RecApplication';
 import Payment from './components/Payment/Payment';
 import Paymentfailure from './components/Payment/Paymentfailure';
 import Paymentsuccess from './components/Payment/Paymentsuccess';
+import Companyinfo from './components/Companyinfo';
 
 import {
   BrowserRouter as Router,
@@ -39,7 +40,7 @@ const AppRoutes = () => {
 
   // Function to check if the current route is /Payment, /Recdashboard, or /admin/dashboard
   const isNoNavbarRoute = () => {
-    return location.pathname === '/Payment' || location.pathname === '/recdashboard' || location.pathname === '/admin/dashboard' || location.pathname === '/paymentsuccess' || location.pathname === '/paymentfailure';
+    return location.pathname === '/Payment' || location.pathname === '/recdashboard' || location.pathname === '/admin/dashboard' || location.pathname === '/paymentsuccess' || location.pathname === '/paymentfailure' || location.pathname === '/Company/info';
   };
 
   return (
@@ -48,6 +49,7 @@ const AppRoutes = () => {
       {!isNoNavbarRoute() && <Navbar />}
       
       <Routes>
+        <Route exact path="/Company/info" element={<Companyinfo />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/Payment" element={<Payment />} />
         <Route exact path="/paymentsuccess" element={<Paymentsuccess />} />

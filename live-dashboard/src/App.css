@@ -16,6 +16,9 @@
 .Logo{
   width: 130px;
 }
+.logo-size{
+  width: 150px;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -959,3 +962,5 @@ button {
 .btnbr{
   border: 2px solid orange; /* Add an orange border */
 }
+
+

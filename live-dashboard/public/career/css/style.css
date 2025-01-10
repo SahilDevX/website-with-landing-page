@@ -1356,7 +1356,7 @@ h6,
   display: flex;
   justify-content: space-between;
 }
-@media (max-width: 376px) {
+@media (max-width: 393px) {
   .d-lg-block-button{
     display: none !important;
   }

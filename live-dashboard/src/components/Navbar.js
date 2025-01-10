@@ -23,7 +23,7 @@ export default function Navbar() {
   };
   const handleRedirect = () => {
     // Open the HTML page in a new tab
-    window.open('/mentorship.html', '_blank');
+    window.open('/mentorship', '_blank');
   };
 
   return (

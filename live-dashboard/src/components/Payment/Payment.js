@@ -102,13 +102,15 @@ export default function Payment() {
 
     return (
 <>
-<div class="navbar-wrapper" id="home">
-    <nav class="navbar-custom">
-      <div className='container'>
-      <img class="navbar-logo-img" src="./career/img/Logo-white.png" alt="Talescope" />
-      </div>
-    </nav>
-</div>
+        <div class="navbar-wrapper" id="home">
+            <nav class="navbar-custom">
+            <div class="container ">
+                    <a href="" class=" nav-container  p-0 mt-0">
+                        <img class="logo-size" src="./career/img/Talescope-O-W.png" alt="Talescope"/>
+                    </a>
+                </div>
+            </nav>
+        </div>
 
 
       <div className="payment-container">

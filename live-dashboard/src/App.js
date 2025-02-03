@@ -16,7 +16,8 @@ import Payment from './components/Payment/Payment';
 import Paymentfailure from './components/Payment/Paymentfailure';
 import Paymentsuccess from './components/Payment/Paymentsuccess';
 import Companyinfo from './components/Companyinfo';
-
+import CustomizedPayment from './components/Payment/CustomizedPayment'
+import CompanyinfoRavi from './components/CompanyinfoRavi'
 import {
   BrowserRouter as Router,
   Switch,
@@ -40,7 +41,7 @@ const AppRoutes = () => {
 
   // Function to check if the current route is /Payment, /Recdashboard, or /admin/dashboard
   const isNoNavbarRoute = () => {
-    return location.pathname === '/Payment' || location.pathname === '/recdashboard' || location.pathname === '/admin/dashboard' || location.pathname === '/paymentsuccess' || location.pathname === '/paymentfailure' || location.pathname === '/Company/info';
+    return location.pathname === '/Payment' || location.pathname === '/recdashboard' || location.pathname === '/admin/dashboard' || location.pathname === '/paymentsuccess' || location.pathname === '/paymentfailure' || location.pathname === '/Company/info' || location.pathname === '/Info/company' || location.pathname === '/customized/payment/2543tee5-9kzz-3850-v629-1gald0x35n41';
   };
 
   return (
@@ -50,8 +51,10 @@ const AppRoutes = () => {
       
       <Routes>
         <Route exact path="/Company/info" element={<Companyinfo />} />
+        <Route exact path="/Info/company" element={<CompanyinfoRavi />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/Payment" element={<Payment />} />
+        <Route exact path="/customized/payment/2543tee5-9kzz-3850-v629-1gald0x35n41" element={<CustomizedPayment />} />
         <Route exact path="/paymentsuccess" element={<Paymentsuccess />} />
         <Route exact path="/paymentfailure" element={<Paymentfailure />} />
         <Route exact path="/" element={<Home />} />

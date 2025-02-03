@@ -24,9 +24,9 @@ VERSION:3.0
 N:Talescope Consulting Pvt.Ltd;;;
 FN:Talescope Consulting Pvt.Ltd
 ORG:Talescope Consulting Pvt.Ltd
-TEL;TYPE=WORK,VOICE:+91 7659856344
-TEL;TYPE=CELL,VOICE:+91 8123891091
-EMAIL:asif@talescope.io
+TEL;TYPE=WORK,VOICE:+91 8123891091
+TEL;TYPE=CELL,VOICE:+91 7659856344
+EMAIL:ravi@talescope.io
 ADR;TYPE=WORK:;;BR Enclave, Singasandra, Bangalore - 560068
 URL:https://talescope.io
 END:VCARD`;
@@ -51,10 +51,10 @@ END:VCARD`;
         <h1 style={styles.name}>Talescope Consulting Pvt.Ltd</h1>
         <p style={styles.description}>Empowering Talent, Elevating Businesses</p>
         <div style={styles.buttons}>
-          <a href="tel:+918123891091" style={styles.button}>
+          <a href="tel:+917659856344" style={styles.button}>
             <FontAwesomeIcon icon={faPhone} style={styles.buttonIcon} /> Phone
           </a>
-          <a href="mailto:asif@talescope.io" style={styles.button}>
+          <a href="mailto:ravi@talescope.io" style={styles.button}>
             <FontAwesomeIcon icon={faEnvelope} style={styles.buttonIcon} /> Email
           </a>
           <a href="https://talescope.io" target="_blank" rel="noopener noreferrer" style={styles.button}>
@@ -66,9 +66,9 @@ END:VCARD`;
       {/* Details Section */}
       <div style={styles.details}>
         {[
-          { icon: faPhone, title: "Phone (Work)", value: "+91 8123891091", link: "tel:+918123891091" },
-          { icon: faPhone, title: "Phone", value: "+91 7659856344", link: "tel:+917659856344" },
-          { icon: faEnvelope, title: "Email", value: "asif@talescope.io", link: "mailto:asif@talescope.io" },
+          { icon: faPhone, title: "Phone (Work)", value: "+91 7659856344", link: "tel:+917659856344" },
+          { icon: faPhone, title: "Phone", value: "+91 8123891091", link: "tel:+918123891091" },
+          { icon: faEnvelope, title: "Email", value: "ravi@talescope.io", link: "mailto:ravi@talescope.io" },
           { icon: faBuilding, title: "Organization", value: "Talescope Consulting Pvt.Ltd" },
           { icon: faLocationDot, title: "Address", value: "BR Enclave, Singasandra, Bangalore - 560068" },
           { icon: faGlobe, title: "Website", value: "talescope.io", link: "https://talescope.io" },
@@ -120,8 +120,6 @@ END:VCARD`;
     </div>
   );
 }
-
-
 
 const styles = {
   // Updated styles

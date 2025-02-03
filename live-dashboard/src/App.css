@@ -963,4 +963,7 @@ button {
   border: 2px solid orange; /* Add an orange border */
 }
 
+.important-font-container {
+  font-family: poppins-semibold, poppins, sans-serif !important;
+}
 
